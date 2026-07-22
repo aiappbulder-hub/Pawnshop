@@ -1,0 +1,29 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes to [section] group in section root menu
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Pawn Shop"
+config/description="Run your own pawn shop: appraise, haggle, and trade."
+run/main_scene="res://scenes/debug/item_database_demo.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+CategoryDatabase="*res://autoload/category_database.gd"
+ConditionDatabase="*res://autoload/condition_database.gd"
+ItemDatabase="*res://autoload/item_database.gd"
+ItemFactory="*res://autoload/item_factory.gd"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

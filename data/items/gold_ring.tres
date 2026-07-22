@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/item/item_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"gold_ring"
+display_name = "14k Gold Ring"
+description = "A simple band, hallmarked 14 karat gold."
+category_id = &"jewelry"
+base_value = 120.0
+weight = 0.05
+stackable = false
+max_stack = 1
+tags = PackedStringArray("gold", "ring", "precious_metal")
+rarity = 0.4

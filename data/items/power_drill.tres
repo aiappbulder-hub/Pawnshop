@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/item/item_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"power_drill"
+display_name = "Cordless Power Drill"
+description = "A cordless power drill, comes with one battery and no charger."
+category_id = &"tools"
+base_value = 45.0
+weight = 1.6
+stackable = false
+max_stack = 1
+tags = PackedStringArray("tools", "power_tool")
+rarity = 0.2
