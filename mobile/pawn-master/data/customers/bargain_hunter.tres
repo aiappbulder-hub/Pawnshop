@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CustomerDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/customer/customer_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"bargain_hunter"
+display_name = "Quick Seller"
+intro_lines = PackedStringArray("I just need this gone today, make me an offer.", "No stories here — just tell me what you'll pay.")
+expectation_multiplier_min = 0.85
+expectation_multiplier_max = 1.05
+patience = 2

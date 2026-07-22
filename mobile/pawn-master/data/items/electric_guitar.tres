@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/item/item_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"electric_guitar"
+display_name = "Electric Guitar"
+description = "A six-string electric guitar with a couple of nicks in the finish."
+category_id = &"instruments"
+base_value = 250.0
+weight = 3.5
+stackable = false
+max_stack = 1
+tags = PackedStringArray("guitar", "music")
+rarity = 0.5
+hidden_attributes = {
+"material": "Alder Body / Maple Neck",
+"authenticity": "Genuine",
+"age": "1990s"
+}

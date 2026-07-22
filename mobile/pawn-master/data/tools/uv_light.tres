@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ToolDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/tool/tool_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"uv_light"
+display_name = "UV Light"
+reveals = PackedStringArray("authenticity")
+unlock_cost = 0.0
+level = 2

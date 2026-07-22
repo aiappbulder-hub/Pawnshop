@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/item/item_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"counterfeit_watch"
+display_name = "\"Luxury\" Wristwatch"
+description = "A sharp-looking wristwatch the seller swears is the real deal."
+category_id = &"jewelry"
+base_value = 40.0
+weight = 0.06
+stackable = false
+max_stack = 1
+tags = PackedStringArray("watch", "risky")
+rarity = 0.3
+hidden_attributes = {
+"material": "Stainless Steel (Not Gold)",
+"authenticity": "Counterfeit",
+"age": "Recent Replica"
+}

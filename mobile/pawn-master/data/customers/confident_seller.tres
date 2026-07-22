@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CustomerDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/customer/customer_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"confident_seller"
+display_name = "Confident Seller"
+intro_lines = PackedStringArray("This is the real deal, trust me. You won't find better.", "I know exactly what this is worth, so don't lowball me.")
+expectation_multiplier_min = 1.5
+expectation_multiplier_max = 2.2
+patience = 4

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ConditionTier" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/item/condition_tier.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"poor"
+display_name = "Poor"
+min_score = 0.0
+value_multiplier = 0.45
+badge_color = Color(0.75, 0.24, 0.24, 1)

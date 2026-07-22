@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/item/item_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"pocket_watch"
+display_name = "Antique Pocket Watch"
+description = "A wind-up pocket watch with an engraved brass case."
+category_id = &"jewelry"
+base_value = 85.0
+weight = 0.08
+stackable = false
+max_stack = 1
+tags = PackedStringArray("antique", "watch")
+rarity = 0.6
+hidden_attributes = {
+"material": "Gold Plated (Not Solid Gold)",
+"authenticity": "Genuine Antique",
+"age": "1910 - 1930"
+}

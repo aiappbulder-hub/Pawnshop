@@ -1,0 +1,13 @@
+# Godot 4 ignores
+.godot/
+.import/
+export.cfg
+export_presets.cfg
+*.translation
+
+# Import artifacts
+*.import
+
+# OS
+.DS_Store
+Thumbs.db
