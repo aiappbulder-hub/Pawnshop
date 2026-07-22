@@ -30,3 +30,17 @@ func calculate_value(instance: ItemInstance) -> float:
 		return 0.0
 
 	return value_strategy.calculate_value(definition, instance)
+
+
+## Apparent (looks-like) value, before authenticity/hidden-quality risk is
+## applied. Used to anchor what a customer believes their item is worth.
+func calculate_apparent_value(instance: ItemInstance) -> float:
+	if instance == null:
+		return 0.0
+
+	var definition := ItemDatabase.get_definition(instance.definition_id)
+	if definition == null:
+		push_error("ItemFactory: instance references unknown definition '%s'" % instance.definition_id)
+		return 0.0
+
+	return ItemValueMath.apparent_value(definition, instance)

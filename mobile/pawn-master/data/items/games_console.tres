@@ -9,6 +9,7 @@ display_name = "Games Console"
 description = "A current-generation home games console with one controller."
 category_id = &"electronics"
 base_value = 180.0
+value_multiplier = 1.0
 weight = 2.2
 stackable = false
 max_stack = 1

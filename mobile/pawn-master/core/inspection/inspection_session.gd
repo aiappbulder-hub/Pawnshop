@@ -24,10 +24,10 @@ func get_condition_label() -> String:
 func get_revealed_attributes(owned_tool_ids: Array[StringName]) -> Dictionary:
 	var revealed_keys: Dictionary = {}
 	for tool_id in owned_tool_ids:
-		var tool := ToolDatabase.get_tool(tool_id)
-		if tool == null:
+		var tool_def := ToolDatabase.get_tool(tool_id)
+		if tool_def == null:
 			continue
-		for key in tool.reveals:
+		for key in tool_def.reveals:
 			revealed_keys[key] = true
 
 	var result: Dictionary = {}

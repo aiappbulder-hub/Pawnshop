@@ -11,6 +11,12 @@ class_name ItemDefinition
 @export var icon: Texture2D
 @export var category_id: StringName
 @export var base_value: float = 0.0
+## Ratio of an item's true resale value to its apparent value. 1.0 means
+## "worth what it looks like"; a convincing fake looks valuable (high
+## apparent value) but has a low multiplier, so overpaying without
+## inspecting first is a real loss. Kept in data so authenticity risk is
+## tunable per item, never hardcoded.
+@export_range(0.0, 2.0, 0.01) var value_multiplier: float = 1.0
 @export var weight: float = 0.0
 @export var stackable: bool = false
 @export var max_stack: int = 1

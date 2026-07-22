@@ -9,6 +9,7 @@ display_name = "Antique Pocket Watch"
 description = "A wind-up pocket watch with an engraved brass case."
 category_id = &"jewelry"
 base_value = 85.0
+value_multiplier = 0.85
 weight = 0.08
 stackable = false
 max_stack = 1

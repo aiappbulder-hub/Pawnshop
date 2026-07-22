@@ -17,13 +17,13 @@ func _ready() -> void:
 func reload() -> void:
 	_tools_by_id.clear()
 	for resource in ResourceFolderLoader.load_all(DATA_PATH):
-		var tool := resource as ToolDefinition
-		if tool == null:
+		var tool_def := resource as ToolDefinition
+		if tool_def == null:
 			push_warning("ToolDatabase: skipping non-ToolDefinition resource in %s" % DATA_PATH)
 			continue
-		if _tools_by_id.has(tool.id):
-			push_warning("ToolDatabase: duplicate tool id '%s'" % tool.id)
-		_tools_by_id[tool.id] = tool
+		if _tools_by_id.has(tool_def.id):
+			push_warning("ToolDatabase: duplicate tool id '%s'" % tool_def.id)
+		_tools_by_id[tool_def.id] = tool_def
 	loaded.emit()
 
 

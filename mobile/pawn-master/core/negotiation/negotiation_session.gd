@@ -1,8 +1,11 @@
 extends RefCounted
 class_name NegotiationSession
-## Orchestrates one haggling encounter for a single item: computes the
-## customer's expected price range from the item's true value, and
-## resolves offers against a pluggable NegotiationChanceStrategy.
+## Orchestrates one haggling encounter for a single item. The customer's
+## asking range is anchored to APPARENT value (what the item looks like
+## it's worth), while accepted deals settle at TRUE value - so a
+## convincing fake can lure a high offer that loses money once its real
+## worth is known. Offers resolve against a pluggable
+## NegotiationChanceStrategy.
 
 var customer: CustomerDefinition
 var item_definition: ItemDefinition
@@ -10,6 +13,7 @@ var item_instance: ItemInstance
 var chance_strategy: NegotiationChanceStrategy
 
 var true_value: float
+var apparent_value: float
 var expectation_min: float
 var expectation_max: float
 var rounds_used: int = 0
@@ -27,8 +31,9 @@ func _init(
 	chance_strategy = p_chance_strategy
 
 	true_value = ItemFactory.calculate_value(item_instance)
-	expectation_min = true_value * customer.expectation_multiplier_min
-	expectation_max = true_value * customer.expectation_multiplier_max
+	apparent_value = ItemFactory.calculate_apparent_value(item_instance)
+	expectation_min = apparent_value * customer.expectation_multiplier_min
+	expectation_max = apparent_value * customer.expectation_multiplier_max
 
 
 func has_rounds_remaining() -> bool:

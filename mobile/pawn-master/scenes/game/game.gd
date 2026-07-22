@@ -4,7 +4,7 @@ extends Control
 ## NegotiationSession; this script just renders their state and forwards
 ## button presses.
 
-enum Screen { CUSTOMER, INSPECT, OFFER, RESULT }
+enum Screen { CUSTOMER, INSPECT, OFFER, RESULT, TOOLS }
 
 const OFFER_STEP := 10.0
 const GOLD_COLOR := Color(0.847, 0.68, 0.294, 1.0)
@@ -28,6 +28,8 @@ var _coins_label: Label
 var _offer_label: Label
 var _chance_label: Label
 var _offer_status_label: Label
+var _screen_before_tools: int = Screen.CUSTOMER
+var _current_screen: int = Screen.CUSTOMER
 
 
 func _ready() -> void:
@@ -84,6 +86,11 @@ func _build_top_bar() -> HBoxContainer:
 	bar.add_child(_coins_label)
 	_update_coins_label()
 
+	var tools_button := Button.new()
+	tools_button.text = "TOOLS"
+	tools_button.pressed.connect(_on_open_tools_pressed)
+	bar.add_child(tools_button)
+
 	return bar
 
 
@@ -92,6 +99,7 @@ func _update_coins_label() -> void:
 
 
 func _show_screen(screen: int) -> void:
+	_current_screen = screen
 	for key in _screens.keys():
 		_screens[key].visible = key == screen
 
@@ -269,6 +277,94 @@ func _on_submit_offer_pressed() -> void:
 
 func _on_walk_away_pressed() -> void:
 	_start_new_encounter()
+
+
+# --- Tools screen ------------------------------------------------------
+
+func _on_open_tools_pressed() -> void:
+	if _current_screen == Screen.TOOLS:
+		return
+	_screen_before_tools = _current_screen
+	_populate_tools_screen()
+	_show_screen(Screen.TOOLS)
+
+
+func _populate_tools_screen() -> void:
+	var body: VBoxContainer = _screens[Screen.TOOLS]
+	_clear(body)
+
+	var title := Label.new()
+	title.text = "TOOLS"
+	title.add_theme_font_size_override("font_size", 20)
+	title.add_theme_color_override("font_color", GOLD_COLOR)
+	body.add_child(title)
+
+	var hint := Label.new()
+	hint.text = "Better tools reveal more of an item before you commit."
+	hint.add_theme_color_override("font_color", DIM_COLOR)
+	hint.autowrap_mode = TextServer.AUTOWRAP_WORD
+	body.add_child(hint)
+
+	for tool_def in ToolDatabase.get_all_tools():
+		body.add_child(_build_tool_row(tool_def))
+
+	var back := Button.new()
+	back.text = "BACK"
+	back.pressed.connect(_on_close_tools_pressed)
+	body.add_child(back)
+
+
+func _build_tool_row(tool_def: ToolDefinition) -> HBoxContainer:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 12)
+
+	var info := VBoxContainer.new()
+	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+
+	var name_label := Label.new()
+	name_label.text = tool_def.display_name
+	info.add_child(name_label)
+
+	var reveals_label := Label.new()
+	var reveal_names := PackedStringArray()
+	for key in tool_def.reveals:
+		reveal_names.append(String(key).capitalize())
+	reveals_label.text = "Reveals: %s" % ", ".join(reveal_names)
+	reveals_label.add_theme_color_override("font_color", DIM_COLOR)
+	info.add_child(reveals_label)
+
+	row.add_child(info)
+
+	if PlayerProgress.owns_tool(tool_def.id):
+		var owned := Label.new()
+		owned.text = "OWNED"
+		owned.add_theme_color_override("font_color", GOOD_COLOR)
+		row.add_child(owned)
+	else:
+		var buy := Button.new()
+		buy.text = "$%d" % int(tool_def.unlock_cost)
+		buy.disabled = not PlayerProgress.can_afford(tool_def.unlock_cost)
+		buy.pressed.connect(_on_buy_tool_pressed.bind(tool_def.id))
+		row.add_child(buy)
+
+	return row
+
+
+func _on_buy_tool_pressed(tool_id: StringName) -> void:
+	var tool_def := ToolDatabase.get_tool(tool_id)
+	if tool_def == null or PlayerProgress.owns_tool(tool_id):
+		return
+	if PlayerProgress.spend_coins(tool_def.unlock_cost):
+		PlayerProgress.unlock_tool(tool_id)
+		_populate_tools_screen()
+
+
+func _on_close_tools_pressed() -> void:
+	# Returning to an active inspection re-reveals attributes a newly
+	# bought tool now exposes.
+	if _screen_before_tools == Screen.INSPECT and _current_inspection != null:
+		_populate_inspect_screen()
+	_show_screen(_screen_before_tools)
 
 
 func _populate_result_screen(outcome: Dictionary) -> void:

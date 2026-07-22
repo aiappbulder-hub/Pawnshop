@@ -9,6 +9,7 @@ display_name = "Electric Guitar"
 description = "A six-string electric guitar with a couple of nicks in the finish."
 category_id = &"instruments"
 base_value = 250.0
+value_multiplier = 1.0
 weight = 3.5
 stackable = false
 max_stack = 1
