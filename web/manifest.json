@@ -1,0 +1,14 @@
+{
+  "name": "Pawn Master",
+  "short_name": "Pawn Master",
+  "description": "Inspect. Decide. Profit. A pocket-sized pawn shop haggling game.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#14110E",
+  "theme_color": "#14110E",
+  "icons": [
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
