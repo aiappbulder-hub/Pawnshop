@@ -2,8 +2,8 @@
  * Pawn Master — core game logic (no DOM).
  *
  * Pure rules the UI renders: value math, inspection reveal, negotiation
- * odds, and player wallet. Kept free of any document/DOM reference so it
- * could be unit-tested or swapped behind a different front-end.
+ * odds, the shop's till, and the win/lose meta (clear Sol's debt without
+ * going broke). No document/DOM reference, so it can be tested standalone.
  */
 (function (PM) {
   "use strict";
@@ -28,7 +28,6 @@
   function trueValue(item, condMult) { return apparentValue(item, condMult) * item.vm; }
 
   // --- Inspection --------------------------------------------------------
-  // Set of attribute keys the player can currently see, given owned tools.
   function revealedKeys(ownedToolIds) {
     const set = new Set();
     ownedToolIds.forEach((id) => {
@@ -39,9 +38,6 @@
   }
 
   // --- Negotiation -------------------------------------------------------
-  // Chance a customer accepts `offer`, given their expected [min,max] range.
-  // Offers inside the range scale floor->ceil; below-range offers fall off
-  // toward zero. Curve endpoints come from config, not hardcoded here.
   function acceptChance(offer, expMin, expMax) {
     if (expMax <= expMin) return offer >= expMin ? cfg.chanceCeil : 0;
     if (offer >= expMin) {
@@ -51,17 +47,27 @@
     return clamp01(offer / expMin) * cfg.chanceFloor;
   }
 
-  // --- Player ------------------------------------------------------------
-  function createPlayer() {
-    return { coins: cfg.startingCoins, tools: cfg.startingTools.slice() };
+  // --- Shop / meta -------------------------------------------------------
+  function createShop() {
+    return { till: cfg.startingTill, tools: cfg.startingTools.slice(), status: "playing" };
   }
-  function ownsTool(player, id) { return player.tools.includes(id); }
-  function buyTool(player, id) {
+  function ownsTool(shop, id) { return shop.tools.includes(id); }
+  function buyTool(shop, id) {
     const t = toolById(id);
-    if (!t || ownsTool(player, id) || player.coins < t.cost) return false;
-    player.coins -= t.cost;
-    player.tools.push(id);
-    return true;
+    if (!t || ownsTool(shop, id) || shop.till < t.cost) return false;
+    shop.till -= t.cost;
+    return true; // caller pushes the id after spending
+  }
+  // Progress toward clearing the debt = profit banked above the starting float.
+  function debtCleared(shop) { return Math.max(0, shop.till - cfg.startingTill); }
+  function debtProgress(shop) { return clamp01(debtCleared(shop) / cfg.debtGoal); }
+
+  // Apply an accepted deal to the till and re-evaluate the run's status.
+  function settleDeal(shop, outcome) {
+    shop.till += outcome.profit;
+    if (debtCleared(shop) >= cfg.debtGoal) shop.status = "won";
+    else if (shop.till < cfg.brokeThreshold) shop.status = "lost";
+    return shop.status;
   }
 
   // --- Encounter ---------------------------------------------------------
@@ -86,8 +92,7 @@
     };
   }
 
-  // Resolve one submitted offer. Returns an outcome object; the caller
-  // decides how to present it and whether to mutate the player.
+  // Resolve one submitted offer. Pure — caller settles the till.
   function submitOffer(enc) {
     enc.roundsUsed += 1;
     const chance = acceptChance(enc.offer, enc.expMin, enc.expMax);
@@ -107,7 +112,7 @@
     apparentValue, trueValue,
     revealedKeys,
     acceptChance,
-    createPlayer, ownsTool, buyTool,
+    createShop, ownsTool, buyTool, debtCleared, debtProgress, settleDeal,
     newEncounter, submitOffer,
   };
 })(window.PM = window.PM || {});

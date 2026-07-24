@@ -3,35 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Pawn Master</title>
-  <meta name="description" content="Inspect. Decide. Profit. A pocket-sized pawn shop haggling game.">
-  <meta name="theme-color" content="#14110E">
+  <title>Pawn Master — Merrick's</title>
+  <meta name="description" content="Inherit a failing pawn shop, appraise real items, spot the fakes, and clear the debt.">
+  <meta name="theme-color" content="#12100D">
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./icon.svg">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Pawn Master">
+  <meta name="apple-mobile-web-app-title" content="Merrick's">
   <link rel="stylesheet" href="./css/theme.css">
 </head>
 <body>
   <div class="device">
     <div class="screen-frame">
-      <div class="topbar">
-        <div class="wordmark">PAWN MASTER</div>
-        <div class="coins" id="coins">0</div>
-        <button class="tools-btn" id="toolsBtn" type="button">Tools</button>
+      <div class="grain" aria-hidden="true"></div>
+
+      <div class="chrome">
+        <div class="topbar">
+          <div class="wordmark">MERRICK'S</div>
+          <div class="till" id="till">$0</div>
+          <button class="tools-btn" id="toolsBtn" type="button">Tools</button>
+        </div>
+        <div class="debt">
+          <div class="debt-track"><div class="debt-fill" id="debtFill"></div></div>
+          <div class="debt-label" id="debtLabel"></div>
+        </div>
       </div>
+
       <div class="screen" id="screen"></div>
     </div>
   </div>
 
   <p class="caption">
-    <b>Pawn Master</b> — inspect an item, decide what it's really worth, and haggle for the deal.
-    Add it to your home screen to play offline.
+    <b>Pawn Master</b> — you've inherited Sol Merrick's shop and his debt. Appraise real goods,
+    catch the fakes, and clear what he owed before you lose the place.
   </p>
 
   <script src="./js/data.js"></script>
+  <script src="./js/art.js"></script>
   <script src="./js/core.js"></script>
   <script src="./js/ui.js"></script>
 </body>
