@@ -1,6 +1,6 @@
 /* Pawn Master service worker — offline shell cache.
    Bump CACHE when any shell file changes so clients pick up the update. */
-const CACHE = "pawn-master-v3";
+const CACHE = "pawn-master-v4";
 const ASSETS = [
   "./",
   "./index.html",

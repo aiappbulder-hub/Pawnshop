@@ -34,13 +34,16 @@
 
 html { height: 100%; }
 
+/* Phone first: the game owns the whole viewport — no page scroll, no
+   letterboxing, nothing behind it to rubber-band against. */
 body {
   margin: 0;
-  min-height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  overscroll-behavior: none;
   font-family: var(--font-ui);
   color: var(--text);
   background: radial-gradient(130% 80% at 50% 0%, #201a12 0%, var(--ground) 52%, #0b0906 100%);
-  background-attachment: fixed;
   -webkit-tap-highlight-color: rgba(214,180,99,0.15);
   -webkit-text-size-adjust: 100%;
   display: flex;
@@ -49,10 +52,9 @@ body {
   gap: 14px;
 }
 
-/* ---------- phone first: the game fills the screen ---------- */
 .device {
   width: 100%;
-  height: 100dvh;
+  height: 100%;
   background: #0d0b08;
 }
 .screen-frame {
@@ -69,7 +71,7 @@ body {
 
 /* ---------- larger screens: show it as a handset on a counter ---------- */
 @media (min-width: 620px) and (min-height: 640px) {
-  body { justify-content: center; padding: 20px 16px 28px; gap: 16px; }
+  body { justify-content: center; padding: 20px 16px 28px; gap: 16px; height: 100dvh; }
   .device {
     max-width: 400px;
     height: min(880px, calc(100dvh - 90px));
@@ -121,6 +123,16 @@ body {
 }
 .tools-btn:hover { border-color: var(--brass); color: var(--brass-bright); background: rgba(184,150,74,0.08); }
 .tools-btn:active { background: rgba(184,150,74,0.18); }
+
+.icon-btn {
+  font-size: 15px; line-height: 1; color: var(--brass);
+  background: transparent; border: 1px solid var(--line-2); border-radius: 4px;
+  padding: 7px 9px; cursor: pointer; flex: 0 0 auto;
+  touch-action: manipulation;
+  transition: border-color .15s, color .15s, background .15s;
+}
+.icon-btn:hover { border-color: var(--brass); color: var(--brass-bright); background: rgba(184,150,74,0.08); }
+.icon-btn[hidden] { display: none; }
 
 .debt { padding: 7px 16px 9px; display: flex; flex-direction: column; gap: 5px; border-bottom: 1px solid var(--line); }
 .debt-track { height: 4px; border-radius: 2px; background: #2a231a; overflow: hidden; }
@@ -192,14 +204,16 @@ body {
 .comps span { font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--label); }
 .comps b { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 13px; color: var(--brass-bright); }
 
-/* ---------- provenance + the tell ---------- */
-.provenance, .tell { flex: 0 0 auto; border-radius: 3px; padding: 12px 13px; }
+/* ---------- provenance, history, the tell ---------- */
+.provenance, .tell, .lore { flex: 0 0 auto; border-radius: 3px; padding: 12px 13px; }
 .provenance { background: rgba(28,25,19,0.6); border-left: 2px solid var(--line-2); }
-.prov-head, .tell-head {
+.lore { background: rgba(28,25,19,0.45); border-left: 2px solid var(--brass); }
+.prov-head, .tell-head, .lore-head {
   font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--label); margin-bottom: 5px;
 }
-.provenance p, .tell p { margin: 0; font-size: 13px; line-height: 1.6; color: var(--text-dim); }
+.lore-head { color: var(--brass); }
+.provenance p, .tell p, .lore p { margin: 0; font-size: 13px; line-height: 1.62; color: var(--text-dim); }
 .provenance p { font-style: italic; }
 .tell { background: rgba(199,146,70,0.07); border-left: 2px solid var(--amber); }
 .tell .tell-head { color: var(--amber); }

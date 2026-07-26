@@ -147,6 +147,10 @@
       <div class="eyebrow">Appraisal</div>
       ${plate("")}
       <div class="specs">${rows.join("")}</div>
+      <div class="lore">
+        <div class="lore-head">What Sol taught you</div>
+        <p>${enc.item.history}</p>
+      </div>
       ${tellBlock}
       <div class="spacer"></div>
       <div class="actions">
@@ -350,10 +354,50 @@
     renderTools();
   }
 
+  // ---------- FULLSCREEN ----------
+  // Android Chrome honours the Fullscreen API on a user gesture, which hides
+  // the browser chrome and gives the game the whole panel. iOS Safari does
+  // not support it on non-video elements, so the button hides itself there
+  // rather than sitting dead in the bar.
+  const fsElement = () => document.fullscreenElement || document.webkitFullscreenElement;
+  const fsSupported = () => {
+    const el = document.documentElement;
+    return !!(el.requestFullscreen || el.webkitRequestFullscreen);
+  };
+
+  function toggleFullscreen() {
+    const el = document.documentElement;
+    if (!fsElement()) {
+      const req = el.requestFullscreen || el.webkitRequestFullscreen;
+      if (req) { try { req.call(el); } catch (_) {} }
+    } else {
+      const exit = document.exitFullscreen || document.webkitExitFullscreen;
+      if (exit) { try { exit.call(document); } catch (_) {} }
+    }
+  }
+
+  function syncFullscreenButton() {
+    const btn = $("fsBtn");
+    if (!btn) return;
+    const active = !!fsElement();
+    btn.textContent = active ? "▣" : "⛶";
+    btn.setAttribute("aria-label", active ? "Exit full screen" : "Full screen");
+  }
+
   // ---------- BOOT ----------
   function boot() {
     setTill(shop.till);
     on("toolsBtn", openTools);
+
+    const fsBtn = $("fsBtn");
+    if (fsBtn && fsSupported()) {
+      fsBtn.hidden = false;
+      fsBtn.addEventListener("click", toggleFullscreen);
+      document.addEventListener("fullscreenchange", syncFullscreenButton);
+      document.addEventListener("webkitfullscreenchange", syncFullscreenButton);
+      syncFullscreenButton();
+    }
+
     document.querySelector(".chrome").classList.add("hidden");
     renderIntro();
 
