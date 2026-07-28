@@ -311,6 +311,148 @@
        <path d="M42 36 q20 -6 38 0" fill="none" stroke="#fff" stroke-width="1.6" opacity=".5"/>
        <ellipse cx="46" cy="66" rx="3" ry="16" fill="#fff" opacity=".16"/>`
     ),
+
+    /* ---- Egyptian ushabti: faience mummiform figure ---- */
+    ushabti: wrap(
+      lg("us-fai", s(0, "#8fd3d1") + s(0.4, "#4fa8ab") + s(1, "#1f6470"), "20%", "0%", "80%", "100%") +
+      lg("us-stripe", s(0, "#2f6f86") + s(1, "#16414f"), "0%", "0%", "100%", "0%"),
+      `<path d="M60 12 c-11 0 -18 8 -18 18 c0 6 2 9 2 13 c-9 4 -13 12 -13 24 l0 33
+               q0 6 6 6 h46 q6 0 6 -6 l0 -33 c0 -12 -4 -20 -13 -24 c0 -4 2 -7 2 -13
+               c0 -10 -7 -18 -18 -18 Z"
+             fill="url(#us-fai)" stroke="#14454f" stroke-width="1.3"/>
+       <path d="M42 30 q18 -9 36 0 l2 14 q-20 -8 -40 0 Z" fill="url(#us-stripe)"/>
+       <g stroke="#1a5763" stroke-width="0.9" opacity=".8">
+         <path d="M47 32 v11 M53 30 v13 M60 29 v14 M67 30 v13 M73 32 v11"/>
+       </g>
+       <ellipse cx="53" cy="24" rx="2.6" ry="1.9" fill="#123c47"/>
+       <ellipse cx="67" cy="24" rx="2.6" ry="1.9" fill="#123c47"/>
+       <path d="M50 22 q3 -2 6 -0.5 M64 21.5 q3 -1.5 6 0.5" stroke="#123c47" stroke-width="1.1" fill="none"/>
+       <path d="M56 31 q4 2 8 0" stroke="#123c47" stroke-width="1" fill="none"/>
+       <path d="M40 56 q20 -6 40 0" fill="none" stroke="#14454f" stroke-width="1.4"/>
+       <path d="M44 60 l10 -6 M76 60 l-10 -6" stroke="#14454f" stroke-width="2.6" stroke-linecap="round"/>
+       <g stroke="#155060" stroke-width="1" opacity=".75">
+         <path d="M42 72 h36 M42 80 h36 M42 88 h36"/>
+       </g>
+       <g fill="#155060" opacity=".8">
+         <circle cx="50" cy="76" r="1.3"/><circle cx="58" cy="76" r="1.3"/><circle cx="66" cy="76" r="1.3"/>
+         <circle cx="54" cy="84" r="1.3"/><circle cx="62" cy="84" r="1.3"/><circle cx="70" cy="84" r="1.3"/>
+       </g>
+       <path d="M46 18 q6 -5 14 -4" fill="none" stroke="#cdf1ef" stroke-width="1.6" opacity=".45"/>`
+    ),
+
+    /* ---- Shipwreck cob: irregular hand-struck silver, sea-etched ---- */
+    cob: wrap(
+      rg("cb-ag", s(0, "#c9cfcc") + s(0.5, "#8d9490") + s(1, "#454b48"), "40%", "34%", "80%"),
+      `<path d="M58 20 q20 -3 29 14 q11 17 3 34 q-8 18 -28 20 q-20 2 -32 -13
+               q-12 -16 -5 -34 q7 -18 33 -21 Z"
+             fill="url(#cb-ag)" stroke="#333836" stroke-width="1.4"/>
+       <g stroke="#3d4340" stroke-width="2.6" fill="none" stroke-linecap="square">
+         <path d="M60 36 V76 M40 56 H80"/>
+       </g>
+       <g stroke="#3d4340" stroke-width="1.4" fill="none">
+         <path d="M48 44 h10 v10 M72 44 h-10 v10 M48 68 h10 v-10 M72 68 h-10 v-10"/>
+       </g>
+       <g fill="#5a615d" opacity=".55">
+         <circle cx="44" cy="34" r="2.6"/><circle cx="79" cy="72" r="3"/><circle cx="38" cy="66" r="2"/>
+         <circle cx="70" cy="28" r="1.8"/>
+       </g>
+       <path d="M34 48 q6 -12 16 -18" fill="none" stroke="#d5dad7" stroke-width="1.6" opacity=".35"/>
+       <path d="M86 62 q-4 12 -14 18" fill="none" stroke="#2b302e" stroke-width="2" opacity=".4"/>`
+    ),
+
+    /* ---- Meteorite slice: etched Widmanstätten pattern ---- */
+    meteorite: wrap(
+      lg("mt-fe", s(0, "#d8dde1") + s(0.45, "#9aa2a8") + s(1, "#565e64"), "10%", "0%", "90%", "100%"),
+      `<path d="M26 34 L74 20 q10 -2 14 8 l10 34 q3 10 -6 15 L52 100 q-9 5 -15 -3
+               L22 62 q-5 -9 4 -14 Z"
+             fill="url(#mt-fe)" stroke="#41484d" stroke-width="1.5"/>
+       <g stroke="#5c646a" stroke-width="1.3" opacity=".95">
+         <path d="M34 40 L70 88 M46 32 L84 74 M58 26 L94 62"/>
+         <path d="M78 30 L38 74 M90 44 L50 90 M64 24 L28 58"/>
+       </g>
+       <g stroke="#eef2f4" stroke-width="0.8" opacity=".5">
+         <path d="M36 42 L68 84 M48 34 L82 72 M76 32 L40 72 M88 46 L52 86"/>
+       </g>
+       <g stroke="#3a4146" stroke-width="2.2" opacity=".55">
+         <path d="M42 52 L62 76 M70 44 L56 62"/>
+       </g>
+       <path d="M28 38 L72 25" fill="none" stroke="#f2f6f8" stroke-width="1.8" opacity=".55"/>`
+    ),
+
+    /* ---- Baltic amber with an insect inclusion ---- */
+    amber: wrap(
+      rg("am-res", s(0, "#ffd98f") + s(0.4, "#e0982f") + s(0.8, "#a95d16") + s(1, "#6d3708"), "38%", "32%", "78%") +
+      rg("am-glow", s(0, "#ffcf7a", ".55") + s(1, "#ffcf7a", "0"), "50%", "50%", "60%"),
+      `<ellipse cx="60" cy="62" rx="46" ry="42" fill="url(#am-glow)"/>
+       <path d="M60 18 q24 2 32 20 q9 19 -2 36 q-12 18 -32 18 q-21 0 -31 -18
+               q-10 -18 -1 -36 q9 -18 34 -20 Z"
+             fill="url(#am-res)" stroke="#7a4310" stroke-width="1.3"/>
+       <g fill="#3a2409" opacity=".92">
+         <ellipse cx="57" cy="62" rx="3.2" ry="6.5" transform="rotate(-16 57 62)"/>
+         <ellipse cx="57" cy="53" rx="2.6" ry="2.6"/>
+         <ellipse cx="58" cy="72" rx="2" ry="3"/>
+       </g>
+       <g stroke="#3a2409" stroke-width="1.1" opacity=".8" stroke-linecap="round">
+         <path d="M54 57 l-8 -5 M54 62 l-9 1 M55 67 l-8 6"/>
+         <path d="M61 57 l8 -6 M61 62 l9 0 M61 67 l7 6"/>
+         <path d="M56 50 l-3 -5 M59 50 l3 -5"/>
+       </g>
+       <path d="M48 55 q10 -6 20 -2" fill="none" stroke="#3a2409" stroke-width="0.7" opacity=".35"/>
+       <ellipse cx="46" cy="40" rx="12" ry="7" fill="#fff6dd" opacity=".4" transform="rotate(-32 46 40)"/>
+       <ellipse cx="76" cy="82" rx="7" ry="4" fill="#5c2f06" opacity=".3" transform="rotate(-30 76 82)"/>`
+    ),
+
+    /* ---- Cuneiform tablet: wedge-pressed clay ---- */
+    tablet: wrap(
+      lg("tb-clay", s(0, "#d8b184") + s(0.45, "#b1855a") + s(1, "#75512f"), "15%", "0%", "85%", "100%"),
+      `<path d="M28 22 q32 -5 64 0 q6 1 6 8 l0 60 q0 7 -6 8 q-32 5 -64 0 q-6 -1 -6 -8
+               l0 -60 q0 -7 6 -8 Z"
+             fill="url(#tb-clay)" stroke="#5b3d21" stroke-width="1.4"/>
+       <g stroke="#6b4826" stroke-width="1.5" stroke-linecap="round" opacity=".9">
+         <path d="M26 38 h68 M26 54 h68 M26 70 h68"/>
+       </g>
+       <g fill="#5b3d21">
+         <path d="M32 30 l4 -4 l1 5 Z"/><path d="M40 30 l4 -4 l1 5 Z"/><path d="M50 31 l4 -4 l1 5 Z"/>
+         <path d="M60 30 l4 -4 l1 5 Z"/><path d="M70 31 l4 -4 l1 5 Z"/><path d="M80 30 l4 -4 l1 5 Z"/>
+         <path d="M32 46 l4 -4 l1 5 Z"/><path d="M42 47 l4 -4 l1 5 Z"/><path d="M54 46 l4 -4 l1 5 Z"/>
+         <path d="M66 47 l4 -4 l1 5 Z"/><path d="M78 46 l4 -4 l1 5 Z"/>
+         <path d="M34 62 l4 -4 l1 5 Z"/><path d="M46 63 l4 -4 l1 5 Z"/><path d="M58 62 l4 -4 l1 5 Z"/>
+         <path d="M70 63 l4 -4 l1 5 Z"/><path d="M82 62 l4 -4 l1 5 Z"/>
+         <path d="M36 78 l4 -4 l1 5 Z"/><path d="M48 79 l4 -4 l1 5 Z"/><path d="M62 78 l4 -4 l1 5 Z"/>
+         <path d="M74 79 l4 -4 l1 5 Z"/>
+       </g>
+       <g stroke="#5b3d21" stroke-width="1" opacity=".65">
+         <path d="M33 33 l6 2 M43 33 l6 2 M53 34 l6 2 M63 33 l6 2 M73 34 l6 2"/>
+         <path d="M35 49 l6 2 M47 50 l6 2 M59 49 l6 2 M71 50 l6 2"/>
+         <path d="M37 65 l6 2 M49 66 l6 2 M61 65 l6 2 M73 66 l6 2"/>
+       </g>
+       <path d="M30 26 q30 -4 60 0" fill="none" stroke="#f0d5b2" stroke-width="1.6" opacity=".35"/>`
+    ),
+
+    /* ---- Trilobite fossil in matrix ---- */
+    trilobite: wrap(
+      lg("tl-matrix", s(0, "#8a7f6c") + s(0.5, "#5f5748") + s(1, "#3a352b"), "0%", "0%", "100%", "100%") +
+      lg("tl-shell", s(0, "#6d5433") + s(0.45, "#3f2f1a") + s(1, "#1e150a"), "20%", "0%", "80%", "100%"),
+      `<path d="M18 24 q40 -8 84 4 q6 2 4 9 l-6 62 q-1 6 -8 6 q-38 3 -74 -4 q-6 -1 -5 -8
+               l3 -62 q0 -6 2 -7 Z"
+             fill="url(#tl-matrix)" stroke="#2a251d" stroke-width="1.3"/>
+       <path d="M60 26 c14 0 22 8 22 17 c0 4 -2 7 -3 10 l-4 32 c-1 8 -7 13 -15 13
+               s-14 -5 -15 -13 l-4 -32 c-1 -3 -3 -6 -3 -10 c0 -9 8 -17 22 -17 Z"
+             fill="url(#tl-shell)" stroke="#15100a" stroke-width="1.3"/>
+       <path d="M42 44 q18 -8 36 0" fill="none" stroke="#15100a" stroke-width="1.4"/>
+       <ellipse cx="50" cy="38" rx="3.4" ry="4" fill="#241a0d"/>
+       <ellipse cx="70" cy="38" rx="3.4" ry="4" fill="#241a0d"/>
+       <g stroke="#15100a" stroke-width="1.2" fill="none" opacity=".9">
+         <path d="M46 54 h28 M47 62 h26 M48 70 h24 M50 78 h20 M53 86 h14"/>
+       </g>
+       <g stroke="#0f0b06" stroke-width="1" opacity=".7">
+         <path d="M53 50 V92 M67 50 V92"/>
+       </g>
+       <g stroke="#8a6f45" stroke-width="0.8" opacity=".45">
+         <path d="M44 58 q16 -5 32 0 M45 74 q15 -5 30 0"/>
+       </g>
+       <path d="M24 30 q34 -5 70 3" fill="none" stroke="#b3a68d" stroke-width="1.4" opacity=".35"/>`
+    ),
   };
 
   PM.art = {
